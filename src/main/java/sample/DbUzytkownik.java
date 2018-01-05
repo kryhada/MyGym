@@ -49,6 +49,6 @@ public class DbUzytkownik {
     }
 
     public String toString(){
-        return "["+id+"] - "+login+" "+haslo+" "+imie+" "+nazwisko;
+        return ""+id+" - "+login+" "+haslo+" "+imie+" "+nazwisko;
     }
 }

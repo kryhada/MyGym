@@ -74,6 +74,26 @@ public class DbConnection {
         return uzytkownicy;
     }
 
+    public List<DbKlient> selectKlient(){
+        List<DbKlient> klienci = new LinkedList<DbKlient>();
+        try{
+            ResultSet result = stat.executeQuery("select id, imie, nazwisko from klient");
+            int id;
+            String imie, nazwisko;
+            while(result.next()){
+                id = result.getInt("id");
+                imie = result.getString("imie");
+                nazwisko = result.getString("nazwisko");
+                klienci.add(new DbKlient(id, imie, nazwisko));
+            }
+        } catch(SQLException e){
+            System.out.println("Blad odczytu z bazy");
+            e.printStackTrace();
+            return null;
+        }
+        return klienci;
+    }
+
     public void closeConnection(){
         try{
             conn.close();

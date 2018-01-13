@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="myDB">
+  <database-model serializer="dbm" rdbms="SQLITE" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="main">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <collation id="3" parent="1" name="BINARY"/>
+    <collation id="4" parent="1" name="NOCASE"/>
+    <collation id="5" parent="1" name="RTRIM"/>
+    <table id="6" parent="2" name="klient"/>
+    <table id="7" parent="2" name="klient_usluga"/>
+    <table id="8" parent="2" name="pracownik"/>
+    <table id="9" parent="2" name="sqlite_master">
+      <System>1</System>
+    </table>
+    <table id="10" parent="2" name="sqlite_sequence">
+      <System>1</System>
+    </table>
+    <table id="11" parent="2" name="stanowisko"/>
+    <table id="12" parent="2" name="usluga"/>
+    <table id="13" parent="2" name="usluga_rodzaj"/>
+    <table id="14" parent="2" name="uzytkownik"/>
+    <column id="15" parent="6" name="id">
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="16" parent="6" name="imie">
+      <Position>1</Position>
+      <DataType>VARCHAR(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="17" parent="6" name="nazwisko">
+      <Position>2</Position>
+      <DataType>VARCHAR(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="18" parent="6" name="nr_telefonu">
+      <Position>3</Position>
+      <DataType>VARCHAR(9)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="19" parent="6" name="wiek">
+      <Position>4</Position>
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="20" parent="6">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="21" parent="7" name="id">
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="22" parent="7" name="klient">
+      <Position>1</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <column id="23" parent="7" name="usluga">
+      <Position>2</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <column id="24" parent="7" name="data_start">
+      <Position>3</Position>
+      <DataType>DATE|0</DataType>
+    </column>
+    <column id="25" parent="7" name="data_stop">
+      <Position>4</Position>
+      <DataType>DATE|0</DataType>
+    </column>
+    <column id="26" parent="7" name="sprzedawca_opiekun">
+      <Position>5</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <key id="27" parent="7">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="28" parent="7" name="klient_usluga_klient_id_fk">
+      <ColNames>klient</ColNames>
+      <RefTableName>klient</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="29" parent="7" name="klient_usluga_usluga_id_fk">
+      <ColNames>usluga</ColNames>
+      <RefTableName>usluga</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="30" parent="7" name="klient_usluga_pracownik_id_fk">
+      <ColNames>sprzedawca_opiekun</ColNames>
+      <RefTableName>pracownik</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="31" parent="8" name="id">
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="32" parent="8" name="imie">
+      <Position>1</Position>
+      <DataType>VARCHAR(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="33" parent="8" name="nazwisko">
+      <Position>2</Position>
+      <DataType>VARCHAR(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="34" parent="8" name="nr_telefonu">
+      <Position>3</Position>
+      <DataType>VARCHAR(9)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="35" parent="8" name="e-mail">
+      <Position>4</Position>
+      <DataType>VARCHAR(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="36" parent="8" name="stanowisko">
+      <Position>5</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <key id="37" parent="8">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="38" parent="8" name="pracownik_stanowisko_id_fk">
+      <ColNames>stanowisko</ColNames>
+      <RefTableName>stanowisko</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="39" parent="9" name="type">
+      <DataType>text|0</DataType>
+    </column>
+    <column id="40" parent="9" name="name">
+      <Position>1</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="41" parent="9" name="tbl_name">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="42" parent="9" name="rootpage">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+    </column>
+    <column id="43" parent="9" name="sql">
+      <Position>4</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="44" parent="10" name="name"/>
+    <column id="45" parent="10" name="seq">
+      <Position>1</Position>
+    </column>
+    <column id="46" parent="11" name="id">
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="47" parent="11" name="nazwa">
+      <Position>1</Position>
+      <DataType>VARCHAR(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="48" parent="11" name="stanowisko_nazwa_uindex">
+      <ColNames>nazwa</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="49" parent="11">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="50" parent="12" name="id">
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="51" parent="12" name="nazwa">
+      <Position>1</Position>
+      <DataType>VARCHAR(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="52" parent="12" name="typ">
+      <Position>2</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <column id="53" parent="12" name="cena">
+      <Position>3</Position>
+      <DataType>INT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="54" parent="12" name="czas_trwania_(dni)">
+      <Position>4</Position>
+      <DataType>INT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="55" parent="12" name="usluga_nazwa_uindex">
+      <ColNames>nazwa</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="56" parent="12">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="57" parent="12" name="usluga_usluga_rodzaj_id_fk">
+      <ColNames>typ</ColNames>
+      <RefTableName>usluga_rodzaj</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="58" parent="13" name="id">
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="59" parent="13" name="nazwa">
+      <Position>1</Position>
+      <DataType>VARCHAR(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="60" parent="13" name="usluga_rodzaj_nazwa_uindex">
+      <ColNames>nazwa</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="61" parent="13">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="62" parent="14" name="id">
+      <DataType>INTEGER|0</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="63" parent="14" name="login">
+      <Position>1</Position>
+      <DataType>VARCHAR(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="64" parent="14" name="haslo">
+      <Position>2</Position>
+      <DataType>VARCHAR(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="65" parent="14" name="imie">
+      <Position>3</Position>
+      <DataType>VARCHAR(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="66" parent="14" name="nazwisko">
+      <Position>4</Position>
+      <DataType>VARCHAR(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="67" parent="14" name="uzytkownik_login_uindex">
+      <ColNames>login</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="68" parent="14">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

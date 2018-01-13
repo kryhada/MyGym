@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="sample.LoginController"
+          prefHeight="300.0" prefWidth="300.0"
+            vgap="8" hgap="10">
+    <padding><Insets top="25" right="25" bottom="25" left="25" /></padding>
+    <Label fx:id="invalidLabel" text="" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+    <Label fx:id="loginLabel" text="Login: " GridPane.columnIndex="0" GridPane.rowIndex="0" />
+    <TextField fx:id="login" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+    <Label fx:id="passLabel" text="Haslo: " GridPane.columnIndex="0" GridPane.rowIndex="1" />
+    <TextField fx:id="haslo" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+    <Button fx:id="button" onAction="#handleLoginAction" text="Login" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+
+
+</GridPane>

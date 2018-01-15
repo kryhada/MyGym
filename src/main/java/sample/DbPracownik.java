@@ -55,6 +55,12 @@ public class DbPracownik {
         this.stanowisko = stanowisko;
     }
 
+    public DbPracownik(int id, String imie, String nazwisko){
+        this.id = id;
+        this.imie = imie;
+        this.nazwisko = nazwisko;
+    }
+
     public String toString(){
         return ""+id+" "+imie+" "+nazwisko+" "+nr_telefonu+" "+email+" "+stanowisko+" ";
     }

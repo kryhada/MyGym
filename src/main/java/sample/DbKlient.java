@@ -10,6 +10,12 @@ public class DbKlient {
     public int getId(){
         return id;
     }
+
+    public String getStringId(){
+        return ""+id;
+    }
+
+
     public void setId(int id){
         this.id = id;
     }
@@ -33,6 +39,9 @@ public class DbKlient {
     }
     public int getWiek(){
         return wiek;
+    }
+    public String getStringWiek(){
+        return ""+wiek;
     }
     public void setWiek(int id){
         this.wiek = wiek;

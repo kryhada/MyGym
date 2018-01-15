@@ -30,18 +30,23 @@ public class LoginController implements Initializable {
         System.out.println("Login: " + login.getText());
         System.out.println("Haslo: " + haslo.getText());
         DbConnection connection = new DbConnection();
-        if (connection.selectUzytkownik(login.getText(), haslo.getText()).isEmpty()) {
+     /*   if (connection.selectUzytkownik(login.getText(), haslo.getText()).isEmpty()) {
             System.out.println("Bùædny login lub hasùo");
             invalidLabel.setText("Bledny login lub haslo!!! \n Sprobuj Ponownie!!!");
         } else {
             System.out.println(connection.selectUzytkownik(login.getText(), haslo.getText()));
             System.out.println("Logowanie Powiodùo siæ");
-            Parent mainWindowSceneParent = FXMLLoader.load(getClass().getResource("/test.fxml"));
+            Parent mainWindowSceneParent = FXMLLoader.load(getClass().getResource("/mainWindow.fxml"));
             Scene mainWindowScene = new Scene(mainWindowSceneParent);
             Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
             stage.setScene(mainWindowScene);
             stage.show();
-        }
+        }*/
+        Parent mainWindowSceneParent = FXMLLoader.load(getClass().getResource("/mainWindow.fxml"));
+        Scene mainWindowScene = new Scene(mainWindowSceneParent);
+        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(mainWindowScene);
+        stage.show();
     }
 
 

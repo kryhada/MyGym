@@ -94,6 +94,26 @@ public class DbConnection {
         return klienci;
     }
 
+    public List<DbPracownik> selectPracownik(){
+        List<DbPracownik> pracownicy = new LinkedList<>();
+        try{
+            ResultSet result = stat.executeQuery("select id, imie, nazwisko from pracownik");
+            int id;
+            String imie, nazwisko;
+            while(result.next()){
+                id = result.getInt("id");
+                imie = result.getString("imie");
+                nazwisko = result.getString("nazwisko");
+                pracownicy.add(new DbPracownik(id, imie, nazwisko));
+            }
+        } catch(SQLException e){
+            System.out.println("Blad odczytu z bazy");
+            e.printStackTrace();
+            return null;
+        }
+        return pracownicy;
+    }
+
     public void closeConnection(){
         try{
             conn.close();

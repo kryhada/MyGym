@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainWindowController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.EmployeesWindowController">
     <top>
         <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
@@ -16,11 +16,11 @@
                     </children></HBox>
                 <HBox id="pracownicy" prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <Button fx:id="pracownicyButton" mnemonicParsing="false" onAction="#handlePracownicyAction" prefHeight="100.0" prefWidth="200.0" text="Pracownicy" />
+                        <Button fx:id="pracownicyButton" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Pracownicy" />
                     </children></HBox>
                 <HBox id="uslugi" prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <Button fx:id="uslugiButton" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Us�ugi" />
+                        <Button fx:id="uslugiButton" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Usługi" />
                     </children></HBox>
                 <HBox id="test" prefHeight="100.0" prefWidth="200.0">
                     <children>
@@ -30,22 +30,7 @@
         </HBox>
     </top>
     <left>
-        <VBox prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-            <children>
-                <VBox>
-                    <children>
-                        <TextField fx:id="search" text="search" />
-                    </children>
-                </VBox>
-                <VBox>
-                    <children>
-                        <ListView fx:id="klienciListView" onMouseClicked="#displaySelected" prefHeight="475.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-                    </children>
-                </VBox>
-            </children>
-        </VBox>
-
-
+        <ListView fx:id="pracownicyListView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
     </left>
     <center>
         <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">

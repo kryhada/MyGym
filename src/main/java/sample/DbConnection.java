@@ -7,7 +7,7 @@ import java.util.List;
 public class DbConnection {
 
     public static final String DRIVER = "org.sqlite.JDBC";
-    public static final String DB_URL = "jdbc:sqlite:C:/Users/Krystian/IdeaProjects/MyGym\\src\\main\\DataBase\\myDB";
+    public static final String DB_URL = "jdbc:sqlite:/Users/pawelcichon/IdeaProjects/MyGym/MyGym/src/main/DataBase/myDB";
 
     private Connection conn;
     private Statement stat;

@@ -14,14 +14,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.collections.FXCollections;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.ComboBoxListCell;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.collections.ObservableList;
-
 
 
 public class MainWindowController implements Initializable  {
@@ -30,7 +29,8 @@ public class MainWindowController implements Initializable  {
     List<DbKlient> klienci = connection.selectKlient();
 
     @FXML
-    public ListView klienciListView = new ListView<String>();
+    public TableView<DbKlient> klienciTable = new TableView<DbKlient>();
+
     @FXML
     public Label idShowLabel;
     @FXML
@@ -42,7 +42,16 @@ public class MainWindowController implements Initializable  {
     @FXML
     public Label wiekShowLabel;
 
-
+    @FXML
+    public TableColumn<DbKlient, Integer> idColumn;
+    @FXML
+    public TableColumn<DbKlient, String> imieColumn;
+    @FXML
+    public TableColumn<DbKlient, String> nazwiskoColumn;
+    @FXML
+    public TableColumn<DbKlient, Integer> wiekColumn;
+    @FXML
+    public TableColumn<DbKlient, String> telefonColumn;
 
     @FXML
     private void handlePracownicyAction(ActionEvent event) throws Exception{
@@ -55,7 +64,7 @@ public class MainWindowController implements Initializable  {
 
     @FXML
     private void displaySelected(){
-        DbKlient selected = (DbKlient)klienciListView.getSelectionModel().getSelectedItem();
+        DbKlient selected =  klienciTable.getSelectionModel().getSelectedItem();
         idShowLabel.setText(selected.getStringId());
         imieShowLabel.setText(selected.getImie());
         nazwiskoShowLabel.setText(selected.getNazwisko());
@@ -66,7 +75,8 @@ public class MainWindowController implements Initializable  {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("Loading user data...");
-        klienciListView.setItems(FXCollections.observableArrayList(klienci));
+        klienciTable.setItems(FXCollections.observableArrayList(klienci));
+
     }
 
 }

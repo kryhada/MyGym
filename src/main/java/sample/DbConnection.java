@@ -7,7 +7,7 @@ import java.util.List;
 public class DbConnection {
 
     public static final String DRIVER = "org.sqlite.JDBC";
-    public static final String DB_URL = "jdbc:sqlite:/Users/pawelcichon/IdeaProjects/MyGym/MyGym/src/main/DataBase/myDB";
+    public static final String DB_URL = "jdbc:sqlite:C:/Users/Krystian/IdeaProjects/MyGym/src/main/DataBase/myDB";
 
     private Connection conn;
     private Statement stat;
@@ -77,14 +77,16 @@ public class DbConnection {
     public List<DbKlient> selectKlient(){
         List<DbKlient> klienci = new LinkedList<DbKlient>();
         try{
-            ResultSet result = stat.executeQuery("select id, imie, nazwisko from klient");
-            int id;
-            String imie, nazwisko;
+            ResultSet result = stat.executeQuery("select * from klient");
+            int id, wiek;
+            String imie, nazwisko, nr_telefonu;
             while(result.next()){
                 id = result.getInt("id");
                 imie = result.getString("imie");
                 nazwisko = result.getString("nazwisko");
-                klienci.add(new DbKlient(id, imie, nazwisko));
+                nr_telefonu = result.getString("nr_telefonu");
+                wiek = result.getInt("wiek");
+                klienci.add(new DbKlient(id, imie, nazwisko, nr_telefonu, wiek));
             }
         } catch(SQLException e){
             System.out.println("Blad odczytu z bazy");

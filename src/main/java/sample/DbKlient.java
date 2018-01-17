@@ -1,11 +1,15 @@
 package sample;
 
+
+
 public class DbKlient {
+
     private int id;
     private String imie;
     private String nazwisko;
     private String nr_telefonu;
     private int wiek;
+
 
     public int getId(){
         return id;

@@ -32,15 +32,15 @@ public class MainWindowController implements Initializable  {
     public TableView<DbKlient> klienciTable = new TableView<DbKlient>();
 
     @FXML
-    public Label idShowLabel;
+    public TextField idShowLabel;
     @FXML
-    public Label imieShowLabel;
+    public TextField imieShowLabel;
     @FXML
-    public Label nazwiskoShowLabel;
+    public TextField nazwiskoShowLabel;
     @FXML
-    public Label telefonShowLabel;
+    public TextField telefonShowLabel;
     @FXML
-    public Label wiekShowLabel;
+    public TextField wiekShowLabel;
 
     @FXML
     public TableColumn<DbKlient, Integer> idColumn;

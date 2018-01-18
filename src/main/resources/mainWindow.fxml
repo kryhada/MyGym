@@ -1,119 +1,223 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
+<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.collections.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.collections.FXCollections?>
-<?import javafx.scene.control.cell.*?>
-<?import javafx.scene.control.TableView?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainWindowController">
-    <top>
-        <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-            <children>
-                <HBox id="klienci" prefHeight="100.0" prefWidth="200.0">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="403.0" prefWidth="737.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainWindowController">
+    <children>
+        <BorderPane prefHeight="200.0" prefWidth="200.0">
+            <top>
+                <MenuBar BorderPane.alignment="CENTER">
+                    <menus>
+                        <Menu mnemonicParsing="false" text="File">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Close" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Edit">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Delete" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Help">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="About" />
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+            </top>
+            <right>
+                <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                     <children>
-                        <Button fx:id="klienciButton" defaultButton="true" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Klienci" />
-                    </children></HBox>
-                <HBox id="pracownicy" prefHeight="100.0" prefWidth="200.0">
-                    <children>
-                        <Button fx:id="pracownicyButton" mnemonicParsing="false" onAction="#handlePracownicyAction" prefHeight="100.0" prefWidth="200.0" text="Pracownicy" />
-                    </children></HBox>
-                <HBox id="uslugi" prefHeight="100.0" prefWidth="200.0">
-                    <children>
-                        <Button fx:id="uslugiButton" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Us�ugi" />
-                    </children></HBox>
-                <HBox id="test" prefHeight="100.0" prefWidth="200.0">
-                    <children>
-                        <Button fx:id="todo" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="TODO" />
-                    </children></HBox>
-            </children>
-        </HBox>
-    </top>
-    <left>
-        <VBox prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-            <children>
-                <VBox>
-                    <children>
-                        <TextField fx:id="search" text="search" />
-                    </children>
-                </VBox>
-                <VBox />
-                <TableView fx:id="klienciTable" prefHeight="498.0" prefWidth="200.0" tableMenuButtonVisible="true" onMouseClicked="#displaySelected">
-                    <columns>
-                        <TableColumn fx:id="idColumn" prefWidth="30.0" text="id">
-                            <cellValueFactory>
-                                <PropertyValueFactory property="id" />
-                            </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn fx:id="imieColumn" minWidth="30.0" prefWidth="28.0" text="imie">
-                            <cellValueFactory>
-                                <PropertyValueFactory property="imie" />
-                            </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn fx:id="nazwiskoColumn" minWidth="30.0" prefWidth="19.0" text="naziwsko" >
-                            <cellValueFactory>
-                                <PropertyValueFactory property="nazwisko" />
-                            </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn fx:id="telefonColumn" prefWidth="30.0" text="telefon" visible="false" >
-                            <cellValueFactory>
-                                <PropertyValueFactory property="nr_telefonu" />
-                            </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn fx:id="wiekColumn" prefWidth="30.0" text="wiek" visible="false" >
-                            <cellValueFactory>
-                                <PropertyValueFactory property="wiek" />
-                            </cellValueFactory>
-                        </TableColumn>
-                    </columns>
-                </TableView>
-            </children>
-        </VBox>
-
-
-    </left>
-    <center>
-        <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
-            <tabs>
-                <Tab text="Dane klienta">
-                    <content>
-                        <GridPane BorderPane.alignment="CENTER">
-                            <columnConstraints>
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="326.0" minWidth="10.0" prefWidth="56.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="550.0" minWidth="10.0" prefWidth="544.0" />
-                            </columnConstraints>
-                            <rowConstraints>
-                                <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
-                                <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="23.0" vgrow="SOMETIMES" />
-                                <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
-                                <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
-                                <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
-                                <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="368.0" vgrow="SOMETIMES" />
-                            </rowConstraints>
-                            <children>
-                                <Label text="id" />
-                                <Label text="imie" GridPane.rowIndex="1" />
-                                <Label text="nazwisko" GridPane.rowIndex="2" />
-                                <Label text="telefon" GridPane.rowIndex="3" />
-                                <Label text="wiek" GridPane.rowIndex="4" />
-                                <Label fx:id="idShowLabel" prefHeight="17.0" prefWidth="500.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Label" GridPane.columnIndex="1" />
-                                <Label fx:id="imieShowLabel" prefHeight="17.0" prefWidth="500.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                <Label fx:id="nazwiskoShowLabel" prefHeight="17.0" prefWidth="500.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                <Label fx:id="telefonShowLabel" prefHeight="17.0" prefWidth="500.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                <Label fx:id="wiekShowLabel" prefHeight="17.0" prefWidth="500.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                            </children>
-                        </GridPane>
-                    </content>
-                </Tab>
-                <Tab text="Karnety">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                    </content>
-                </Tab>
-            </tabs>
-        </TabPane>
-    </center>
-</BorderPane>
+                        <Button fx:id="klienciButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="92.0" prefWidth="100.0" text="Klienci">
+                            <graphic>
+                                <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="https://image.ibb.co/frCpZ6/gender_neutral_user_2.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button fx:id="pracownicyButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#handlePracownicyAction" prefHeight="92.0" prefWidth="100.0" text="Pracownicy">
+                            <graphic>
+                                <ImageView fitHeight="60.0" fitWidth="136.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="https://image.ibb.co/cdetcR/conference_background_selected.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button fx:id="uslugiButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="93.0" prefWidth="100.0" text="Usługi">
+                            <graphic>
+                                <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="https://image.ibb.co/dFix46/icons8_administrative_tools_50.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button fx:id="todo" contentDisplay="TOP" mnemonicParsing="false" prefHeight="94.0" prefWidth="102.0" text="Promocje">
+                            <graphic>
+                                <ImageView fitHeight="46.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="https://image.ibb.co/grpdSR/icons8_discount_50.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children></VBox>
+            </right>
+            <center>
+                <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+                    <tabs>
+                        <Tab text="Dane Klienta">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="338.0" prefWidth="472.0">
+                                    <children>
+                                        <ImageView fitHeight="30.0" fitWidth="36.0" layoutX="384.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
+                                        <VBox layoutX="329.0" prefHeight="340.0" prefWidth="308.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="329.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <children>
+                                                <HBox alignment="CENTER" prefHeight="57.0" prefWidth="492.0">
+                                                    <children>
+                                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID">
+                                                            <HBox.margin>
+                                                                <Insets bottom="20.0" left="20.0" right="55.0" top="20.0" />
+                                                            </HBox.margin>
+                                                        </Text>
+                                                        <VBox prefHeight="57.0" prefWidth="457.0">
+                                                            <HBox.margin>
+                                                                <Insets />
+                                                            </HBox.margin>
+                                                            <children>
+                                                                <TextField fx:id="idShowLabel" alignment="TOP_CENTER" prefHeight="33.0" prefWidth="384.0">
+                                                                    <VBox.margin>
+                                                                        <Insets right="20.0" top="12.0" />
+                                                                    </VBox.margin>
+                                                                </TextField>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets />
+                                                    </VBox.margin>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="75.0" prefWidth="500.0">
+                                                    <children>
+                                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Imie">
+                                                            <HBox.margin>
+                                                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                                            </HBox.margin>
+                                                        </Text>
+                                                        <VBox prefHeight="70.0" prefWidth="434.0">
+                                                            <HBox.margin>
+                                                                <Insets />
+                                                            </HBox.margin>
+                                                            <children>
+                                                                <TextField fx:id="imieShowLabel" alignment="TOP_CENTER" prefHeight="33.0" prefWidth="411.0">
+                                                                    <VBox.margin>
+                                                                        <Insets left="22.0" right="20.0" top="20.0" />
+                                                                    </VBox.margin>
+                                                                </TextField>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="71.0" prefWidth="391.0">
+                                                    <children>
+                                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nazwisko">
+                                                            <HBox.margin>
+                                                                <Insets bottom="20.0" left="20.0" right="1.0" top="20.0" />
+                                                            </HBox.margin>
+                                                        </Text>
+                                                        <VBox prefHeight="75.0" prefWidth="499.0">
+                                                            <HBox.margin>
+                                                                <Insets />
+                                                            </HBox.margin>
+                                                            <children>
+                                                                <TextField fx:id="nazwiskoShowLabel" alignment="TOP_CENTER" prefHeight="33.0" prefWidth="367.0">
+                                                                    <VBox.margin>
+                                                                        <Insets left="9.0" right="19.0" top="20.0" />
+                                                                    </VBox.margin>
+                                                                </TextField>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="75.0" prefWidth="392.0">
+                                                    <children>
+                                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Telefon">
+                                                            <HBox.margin>
+                                                                <Insets bottom="20.0" left="20.0" right="5.0" top="20.0" />
+                                                            </HBox.margin>
+                                                        </Text>
+                                                        <VBox prefHeight="75.0" prefWidth="499.0">
+                                                            <children>
+                                                                <TextField fx:id="telefonShowLabel" alignment="TOP_CENTER" prefHeight="33.0" prefWidth="424.0">
+                                                                    <VBox.margin>
+                                                                        <Insets left="18.0" right="20.0" top="20.0" />
+                                                                    </VBox.margin>
+                                                                </TextField>
+                                                            </children>
+                                                            <HBox.margin>
+                                                                <Insets />
+                                                            </HBox.margin>
+                                                        </VBox>
+                                                    </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="75.0" prefWidth="392.0">
+                                                    <children>
+                                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wiek">
+                                                            <HBox.margin>
+                                                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                                            </HBox.margin>
+                                                        </Text>
+                                                        <VBox prefHeight="75.0" prefWidth="499.0">
+                                                            <children>
+                                                                <TextField fx:id="wiekShowLabel" alignment="TOP_CENTER" prefHeight="33.0" prefWidth="424.0">
+                                                                    <VBox.margin>
+                                                                        <Insets left="18.0" right="19.0" top="20.0" />
+                                                                    </VBox.margin>
+                                                                </TextField>
+                                                            </children>
+                                                            <HBox.margin>
+                                                                <Insets />
+                                                            </HBox.margin>
+                                                        </VBox>
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                        <VBox layoutX="1.0" layoutY="1.0" prefHeight="537.0" prefWidth="338.0">
+                                            <children>
+                                                <TextField fx:id="search" prefHeight="0.0" prefWidth="237.0" promptText="Szukaj" />
+                                                <TableView prefHeight="312.0" prefWidth="322.0" tableMenuButtonVisible="true">
+                                                    <columns>
+                                                        <TableColumn fx:id="idColumn" prefWidth="39.0" text="ID" />
+                                                        <TableColumn fx:id="imieColumn" prefWidth="68.0" text="Imie" />
+                                                        <TableColumn fx:id="nazwiskoColumn" prefWidth="91.0" text="Naziwsko" />
+                                                        <TableColumn fx:id="telefonColumn" prefWidth="91.0" text="Telefon" visible="false" />
+                                                        <TableColumn fx:id="wiekColumn" prefWidth="48.0" text="Wiek" visible="false"/>
+                                                    </columns>
+                                                </TableView>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+                        <Tab text="Karnety">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                            </content>
+                        </Tab>
+                    </tabs>
+                </TabPane>
+            </center>
+        </BorderPane>
+    </children>
+</StackPane>

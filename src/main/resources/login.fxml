@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
@@ -9,27 +19,31 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 
-<GridPane hgap="10" prefHeight="300.0" prefWidth="300.0" vgap="8" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LoginController">
-    <padding><Insets bottom="25" left="25" right="25" top="25" /></padding>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="351.0" minWidth="500.0" prefHeight="351.0" prefWidth="500.0" style="-fx-background-color: #2A2E37;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LoginController">
     <children>
-        <Label fx:id="invalidLabel" text="" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-        <Label fx:id="loginLabel" text="Login: " GridPane.columnIndex="0" GridPane.rowIndex="0" />
-        <TextField fx:id="login" promptText="Podaj login" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-        <Label fx:id="passLabel" text="Haslo: " GridPane.columnIndex="0" GridPane.rowIndex="1" />
-        <PasswordField fx:id="haslo" promptText="Podaj hasło" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-        <Button fx:id="button" onAction="#handleLoginAction" text="Login" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <JFXTextField fx:id="login" labelFloat="true" layoutX="75.0" layoutY="144.0" promptText="Podaj login" unFocusColor="#ababab" style="-fx-prompt-text-fill: #ababab; -fx-text-fill: #ababab" />
+        <JFXPasswordField fx:id="haslo" labelFloat="true" layoutX="75.0" layoutY="200.0" promptText="Podaj haslo" unFocusColor="#ababab" style="-fx-prompt-text-fill: #ababab; -fx-text-fill: #ababab" />
+        <ImageView fitHeight="39.0" fitWidth="38.0" layoutX="37.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="https://image.ibb.co/frCpZ6/gender_neutral_user_2.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="39.0" fitWidth="38.0" layoutX="37.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="https://image.ibb.co/bOLbE6/lock_2_2.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="344.0" fitWidth="206.0" layoutX="286.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="http://breafitnesscenters.com/wp-content/uploads/2016/04/brea-fitness-center-couple.png" />
+            </image>
+        </ImageView>
+        <JFXButton fx:id="button" layoutX="87.0" layoutY="256.0" onAction="#handleLoginAction" prefHeight="27.0" prefWidth="107.0" style="-fx-background-color: #2196f3;" text="Login" textFill="WHITE" />
+        <ImageView fitHeight="139.0" fitWidth="288.0" layoutX="14.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="https://image.ibb.co/gPAbE6/picturetopeople_org_044b83d809fdead0e9df089779cd923ac146d800eba18487ec.png" />
+            </image>
+        </ImageView>
     </children>
-    <columnConstraints>
-        <ColumnConstraints />
-        <ColumnConstraints />
-    </columnConstraints>
-    <rowConstraints>
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-    </rowConstraints>
-
-
-
-</GridPane>
+</Pane>

@@ -1,6 +1,6 @@
 
 public class Main {
 	public static void main(String[] args) {
-		//testy
+		System.out.println("Pawlik jest super!");
 	}
 }

@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="403.0" prefWidth="737.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainWindowController">
+<StackPane maxHeight="403.0" maxWidth="737.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="403.0" prefWidth="737.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainWindowController">
     <children>
         <BorderPane prefHeight="200.0" prefWidth="200.0">
             <top>
@@ -199,9 +199,9 @@
                                                     <columns>
                                                         <TableColumn fx:id="idColumn" prefWidth="39.0" text="ID" />
                                                         <TableColumn fx:id="imieColumn" prefWidth="68.0" text="Imie" />
-                                                        <TableColumn fx:id="nazwiskoColumn" prefWidth="91.0" text="Naziwsko" />
+                                                        <TableColumn fx:id="nazwiskoColumn" prefWidth="91.0" text="Nazwisko" />
                                                         <TableColumn fx:id="telefonColumn" prefWidth="91.0" text="Telefon" visible="false" />
-                                                        <TableColumn fx:id="wiekColumn" prefWidth="48.0" text="Wiek" visible="false"/>
+                                                        <TableColumn fx:id="wiekColumn" prefWidth="48.0" text="Wiek" visible="false" />
                                                     </columns>
                                                 </TableView>
                                             </children>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.control.TableView?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainWindowController">
+    <top>
+        <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <HBox id="klienci" prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Button fx:id="klienciButton" defaultButton="true" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Klienci" />
+                    </children></HBox>
+                <HBox id="pracownicy" prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Button fx:id="pracownicyButton" mnemonicParsing="false" onAction="#handlePracownicyAction" prefHeight="100.0" prefWidth="200.0" text="Pracownicy" />
+                    </children></HBox>
+                <HBox id="uslugi" prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Button fx:id="uslugiButton" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Us�ugi" />
+                    </children></HBox>
+                <HBox id="test" prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Button fx:id="todo" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="TODO" />
+                    </children></HBox>
+            </children>
+        </HBox>
+    </top>
+    <left>
+	<VBox prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+		<children>
+			<VBox>
+                <children>
+                    <TextField fx:id="search" text="search" />
+			    </children>
+            </VBox>
+			<VBox />
+            <TableView fx:id="klienciTable" prefHeight="498.0" prefWidth="200.0" tableMenuButtonVisible="true" onMouseClicked="#displaySelected">
+                <columns>
+                    <TableColumn fx:id="idColumn" prefWidth="30.0" text="id">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="id" />
+                    </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="imieColumn" minWidth="30.0" prefWidth="28.0" text="imie">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="imie" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="nazwiskoColumn" minWidth="30.0" prefWidth="19.0" text="naziwsko" >
+                        <cellValueFactory>
+                            <PropertyValueFactory property="nazwisko" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="telefonColumn" prefWidth="30.0" text="telefonColumn" visible="false" >
+                        <cellValueFactory>
+                            <PropertyValueFactory property="nr_telefonu" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="wiekColumn" prefWidth="30.0" text="wiekColumn" visible="false" >
+                        <cellValueFactory>
+                            <PropertyValueFactory property="wiek" />
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+		</children>
+	</VBox>
+
+	
+    </left>
+    <center>
+        <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+            <tabs>
+                <Tab text="Dane klienta">
+                    <content>
+                        <GridPane BorderPane.alignment="CENTER">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="326.0" minWidth="10.0" prefWidth="56.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="550.0" minWidth="10.0" prefWidth="544.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="23.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="368.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <Label text="id" />
+                                <Label text="imie" GridPane.rowIndex="1" />
+                                <Label text="nazwisko" GridPane.rowIndex="2" />
+                                <Label text="telefon" GridPane.rowIndex="3" />
+                                <Label text="wiek" GridPane.rowIndex="4" />
+                                <Label fx:id="idShowLabel" prefHeight="17.0" prefWidth="500.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Label" GridPane.columnIndex="1" />
+                                <Label fx:id="imieShowLabel" prefHeight="17.0" prefWidth="500.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <Label fx:id="nazwiskoShowLabel" prefHeight="17.0" prefWidth="500.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                <Label fx:id="telefonShowLabel" prefHeight="17.0" prefWidth="500.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                <Label fx:id="wiekShowLabel" prefHeight="17.0" prefWidth="500.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                            </children>
+                        </GridPane>
+                    </content>
+                </Tab>
+                <Tab text="Karnety">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+</BorderPane>

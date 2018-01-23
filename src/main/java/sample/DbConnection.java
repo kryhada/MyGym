@@ -79,14 +79,15 @@ public class DbConnection {
         try{
             ResultSet result = stat.executeQuery("select * from klient");
             int id, wiek;
-            String imie, nazwisko, nr_telefonu;
+            String imie, nazwisko, nr_telefonu, gender;
             while(result.next()){
                 id = result.getInt("id");
                 imie = result.getString("imie");
                 nazwisko = result.getString("nazwisko");
                 nr_telefonu = result.getString("nr_telefonu");
                 wiek = result.getInt("wiek");
-                klienci.add(new DbKlient(id, imie, nazwisko, nr_telefonu, wiek));
+                gender = result.getString("gender");
+                klienci.add(new DbKlient(id, imie, nazwisko, nr_telefonu, wiek, gender));
             }
         } catch(SQLException e){
             System.out.println("Blad odczytu z bazy");

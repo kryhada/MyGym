@@ -1,12 +1,11 @@
 package sample;
 
-import java.awt.event.MouseEvent;
 import java.net.URL;
-import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import javafx.application.Application;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,15 +17,19 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.collections.FXCollections;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.cell.ComboBoxListCell;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.collections.ObservableList;
+import javafx.collections.transformation.SortedList;
+import javafx.scene.control.TextField;
+import sample.CriteriaFilters.CriteriaGender;
 
 
 public class MainWindowController implements Initializable  {
 
     public DbConnection connection = new DbConnection();
     List<DbKlient> klienci = connection.selectKlient();
+    List<DbKlient> fullListKlienci = klienci;
+    List<String> klienciGender = new ArrayList<String>();
+
+
 
     @FXML
     public TableView<DbKlient> klienciTable = new TableView<DbKlient>();
@@ -52,6 +55,15 @@ public class MainWindowController implements Initializable  {
     public TableColumn<DbKlient, Integer> wiekColumn;
     @FXML
     public TableColumn<DbKlient, String> telefonColumn;
+    @FXML
+    public TableColumn<DbKlient, String> sexColumn;
+
+    @FXML
+    public TextField search;
+
+    @FXML
+    public ChoiceBox<String> tableSexChoiceBox;
+
 
     @FXML
     private void handlePracownicyAction(ActionEvent event) throws Exception{
@@ -72,10 +84,60 @@ public class MainWindowController implements Initializable  {
         wiekShowLabel.setText(selected.getStringWiek());
     }
 
+    @FXML
+    private void getChoice(ActionEvent event){
+        for(DbKlient client : klienci){
+            klienciGender.add(client.getGender());
+        }
+        String value = tableSexChoiceBox.getValue();
+        System.out.println(value);
+        CriteriaGender gender = new CriteriaGender(value);
+        klienciTable.setItems(FXCollections.observableArrayList(gender.meetCriteria(klienci)));
+
+    }
+
+    @FXML
+    private void startSearch(ActionEvent event){
+        FilteredList<DbKlient> filteredData = new FilteredList<DbKlient>(FXCollections.observableArrayList(klienciTable.getItems()), p -> true);
+        search.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(klient -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (klient.getImie().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; //filter matches imie
+                } else if (klient.getNazwisko().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; //filter matches nazwisko
+                } else if (klient.getStringId().contains(lowerCaseFilter)){
+                    return true; // filter matches ID
+                }
+                return false; //does not match
+            });
+        });
+        SortedList<DbKlient> sortedData = new SortedList<DbKlient>(filteredData);
+        sortedData.comparatorProperty().bind(klienciTable.comparatorProperty());
+        klienciTable.setItems(sortedData);
+        System.out.println(sortedData);
+    }
+
+    @FXML
+    private void resetFilter(ActionEvent event){
+        tableSexChoiceBox.getSelectionModel().selectFirst();
+        search.setText("");
+        klienciTable.setItems(FXCollections.observableArrayList(fullListKlienci));
+    }
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("Loading user data...");
         klienciTable.setItems(FXCollections.observableArrayList(klienci));
+        tableSexChoiceBox.setItems(FXCollections.observableArrayList( "<default>", "Male", "Female"));
+
+
 
     }
 

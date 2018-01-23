@@ -16,6 +16,66 @@
 <StackPane maxHeight="403.0" maxWidth="737.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="373.0" prefWidth="737.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainWindowController">
     <children>
         <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #2A2E37;">
+            <left>
+                <VBox layoutX="1.0" layoutY="1.0" prefHeight="537.0" prefWidth="250.0" style="-fx-background-color: #ababab;" >
+                    <children>
+                        <VBox>
+                            <children>
+                                <HBox><children><TextField fx:id="search" onAction="#startSearch" prefHeight="0.0" prefWidth="250.0" promptText="Szukaj" style="-fx-background-color: #FFFFFF;" /></children></HBox>
+                                <HBox>
+                                    <children>
+                                        <ChoiceBox fx:id="tableIdChoiceBox" layoutX="209.0" layoutY="147.0" prefWidth="150.0" onAction="#getIdChoice"/>
+                                        <ChoiceBox fx:id="tableNameChoiceBox" layoutX="209.0" layoutY="147.0" prefWidth="150.0" onAction="#getNameChoice"/>
+                                        <ChoiceBox fx:id="tableSurnameChoiceBox" layoutX="209.0" layoutY="147.0" prefWidth="150.0" onAction="#getSurnameChoice"/>
+                                        <ChoiceBox fx:id="tableGenderChoiceBox" layoutX="209.0" layoutY="147.0" prefWidth="150.0" onAction="#getGenderChoice"/>
+                                    </children>
+                                </HBox>
+                                <HBox>
+                                    <children>
+                                        <Button fx:id="resetFilter" layoutX="209.0" layoutY="147.0" prefWidth="250.0" onAction="#resetFilter" text="reset filter"/>
+                                    </children>
+
+                                </HBox>
+
+                            </children>
+                        </VBox>
+                        <TableView fx:id="klienciTable" prefHeight="312.0" prefWidth="322.0" style="-fx-background-color: #2A2E37;" tableMenuButtonVisible="true" onMouseClicked="#displaySelected">
+                            <columns>
+                                <TableColumn fx:id="idColumn" prefWidth="39.0" text="ID">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="id" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="imieColumn" prefWidth="68.0" text="Imie" >
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="imie" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="nazwiskoColumn" prefWidth="91.0" text="Nazwisko">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="nazwisko" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="telefonColumn" prefWidth="91.0" text="Telefon" visible="false">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="telefon" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="wiekColumn" prefWidth="48.0" text="Wiek" visible="false">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="wiek" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="sexColumn" prefWidth="48.0" text="Gender" visible="true">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="gender" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                            </columns>
+                        </TableView>
+                    </children>
+                </VBox>
+            </left>
             <right>
                 <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                     <children>
@@ -65,7 +125,7 @@
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="338.0" prefWidth="472.0">
                            <children>
                               <ImageView fitHeight="30.0" fitWidth="36.0" layoutX="384.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
-                              <VBox layoutX="329.0" prefHeight="340.0" prefWidth="308.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="329.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <VBox layoutX="329.0" prefHeight="340.0" prefWidth="308.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <HBox alignment="CENTER" prefHeight="57.0" prefWidth="492.0">
                                        <children>
@@ -177,52 +237,7 @@
                                     </HBox>
                                  </children>
                               </VBox>
-                              <VBox layoutX="1.0" layoutY="1.0" prefHeight="537.0" prefWidth="338.0">
-                                 <children>
-                                     <VBox>
-                                         <children>
-                                             <HBox><children><TextField fx:id="search" onAction="#startSearch" prefHeight="0.0" prefWidth="237.0" promptText="Szukaj" style="-fx-background-color: #FFFFFF;" /></children></HBox>
-                                             <HBox><children><ChoiceBox fx:id="tableSexChoiceBox" layoutX="209.0" layoutY="147.0" prefWidth="150.0" onAction="#getChoice"/></children></HBox>
-                                             <HBox><children><Button fx:id="resetFilter" layoutX="209.0" layoutY="147.0" prefWidth="150.0" onAction="#resetFilter" text="reset filter"/></children></HBox>
 
-                                         </children>
-                                     </VBox>
-                                    <TableView fx:id="klienciTable" prefHeight="312.0" prefWidth="322.0" style="-fx-background-color: #2A2E37;" tableMenuButtonVisible="true" onMouseClicked="#displaySelected">
-                                       <columns>
-                                          <TableColumn fx:id="idColumn" prefWidth="39.0" text="ID">
-                                              <cellValueFactory>
-                                                  <PropertyValueFactory property="id" />
-                                              </cellValueFactory>
-                                          </TableColumn>
-                                          <TableColumn fx:id="imieColumn" prefWidth="68.0" text="Imie" >
-                                              <cellValueFactory>
-                                                  <PropertyValueFactory property="imie" />
-                                              </cellValueFactory>
-                                          </TableColumn>
-                                          <TableColumn fx:id="nazwiskoColumn" prefWidth="91.0" text="Nazwisko">
-                                              <cellValueFactory>
-                                                  <PropertyValueFactory property="nazwisko" />
-                                              </cellValueFactory>
-                                          </TableColumn>
-                                           <TableColumn fx:id="telefonColumn" prefWidth="91.0" text="Telefon" visible="false">
-                                               <cellValueFactory>
-                                                   <PropertyValueFactory property="telefon" />
-                                               </cellValueFactory>
-                                           </TableColumn>
-                                          <TableColumn fx:id="wiekColumn" prefWidth="48.0" text="Wiek" visible="false">
-                                              <cellValueFactory>
-                                                  <PropertyValueFactory property="wiek" />
-                                              </cellValueFactory>
-                                          </TableColumn>
-                                           <TableColumn fx:id="sexColumn" prefWidth="48.0" text="Gender" visible="true">
-                                               <cellValueFactory>
-                                                   <PropertyValueFactory property="gender" />
-                                               </cellValueFactory>
-                                           </TableColumn>
-                                       </columns>
-                                    </TableView>
-                                 </children>
-                              </VBox>
                            </children>
                         </AnchorPane>
                      </content>

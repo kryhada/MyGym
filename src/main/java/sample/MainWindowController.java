@@ -20,6 +20,9 @@ import javafx.scene.control.TableColumn;
 import javafx.collections.transformation.SortedList;
 import javafx.scene.control.TextField;
 import sample.CriteriaFilters.CriteriaGender;
+import sample.CriteriaFilters.CriteriaID;
+import sample.CriteriaFilters.CriteriaName;
+import sample.CriteriaFilters.CriteriaSurname;
 
 
 public class MainWindowController implements Initializable  {
@@ -28,6 +31,9 @@ public class MainWindowController implements Initializable  {
     List<DbKlient> klienci = connection.selectKlient();
     List<DbKlient> fullListKlienci = klienci;
     List<String> klienciGender = new ArrayList<String>();
+    List<String> klienciId = new ArrayList<String>();
+    List<String> klienciName = new ArrayList<String>();
+    List<String> klienciSurname = new ArrayList<String>();
 
 
 
@@ -35,15 +41,15 @@ public class MainWindowController implements Initializable  {
     public TableView<DbKlient> klienciTable = new TableView<DbKlient>();
 
     @FXML
-    public TextField idShowLabel;
+    public Label idShowLabel;
     @FXML
-    public TextField imieShowLabel;
+    public Label imieShowLabel;
     @FXML
-    public TextField nazwiskoShowLabel;
+    public Label nazwiskoShowLabel;
     @FXML
-    public TextField telefonShowLabel;
+    public Label telefonShowLabel;
     @FXML
-    public TextField wiekShowLabel;
+    public Label wiekShowLabel;
 
     @FXML
     public TableColumn<DbKlient, Integer> idColumn;
@@ -62,7 +68,13 @@ public class MainWindowController implements Initializable  {
     public TextField search;
 
     @FXML
-    public ChoiceBox<String> tableSexChoiceBox;
+    public ChoiceBox<String> tableIdChoiceBox;
+    @FXML
+    public ChoiceBox<String> tableNameChoiceBox;
+    @FXML
+    public ChoiceBox<String> tableSurnameChoiceBox;
+    @FXML
+    public ChoiceBox<String> tableGenderChoiceBox;
 
 
     @FXML
@@ -85,11 +97,45 @@ public class MainWindowController implements Initializable  {
     }
 
     @FXML
-    private void getChoice(ActionEvent event){
+    private void getIdChoice(ActionEvent event){
+        for(DbKlient client : klienci){
+            klienciId.add(client.getStringId());
+        }
+        String value = tableIdChoiceBox.getValue();
+        System.out.println(value);
+        CriteriaID id = new CriteriaID(value);
+        klienciTable.setItems(FXCollections.observableArrayList(id.meetCriteria(klienci)));
+    }
+
+    @FXML
+    private void getNameChoice(ActionEvent event){
+        for(DbKlient client : klienci){
+            klienciName.add(client.getImie());
+        }
+        String value = tableNameChoiceBox.getValue();
+        System.out.println(value);
+        CriteriaName name = new CriteriaName(value);
+        klienciTable.setItems(FXCollections.observableArrayList(name.meetCriteria(klienci)));
+    }
+
+    @FXML
+    private void getSurnameChoice(ActionEvent event){
+        for(DbKlient client : klienci){
+            klienciSurname.add(client.getNazwisko());
+        }
+        String value = tableSurnameChoiceBox.getValue();
+        System.out.println(value);
+        CriteriaSurname surname = new CriteriaSurname(value);
+        klienciTable.setItems(FXCollections.observableArrayList(surname.meetCriteria(klienci)));
+    }
+
+
+    @FXML
+    private void getGenderChoice(ActionEvent event){
         for(DbKlient client : klienci){
             klienciGender.add(client.getGender());
         }
-        String value = tableSexChoiceBox.getValue();
+        String value = tableGenderChoiceBox.getValue();
         System.out.println(value);
         CriteriaGender gender = new CriteriaGender(value);
         klienciTable.setItems(FXCollections.observableArrayList(gender.meetCriteria(klienci)));
@@ -125,7 +171,7 @@ public class MainWindowController implements Initializable  {
 
     @FXML
     private void resetFilter(ActionEvent event){
-        tableSexChoiceBox.getSelectionModel().selectFirst();
+        tableGenderChoiceBox.getSelectionModel().selectFirst();
         search.setText("");
         klienciTable.setItems(FXCollections.observableArrayList(fullListKlienci));
     }
@@ -135,7 +181,15 @@ public class MainWindowController implements Initializable  {
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("Loading user data...");
         klienciTable.setItems(FXCollections.observableArrayList(klienci));
-        tableSexChoiceBox.setItems(FXCollections.observableArrayList( "<default>", "Male", "Female"));
+        for(DbKlient client : klienci){
+            klienciId.add(client.getStringId());
+            klienciName.add(client.getImie());
+            klienciSurname.add(client.getNazwisko());
+        }
+        tableIdChoiceBox.setItems(FXCollections.observableArrayList(klienciId));
+        tableNameChoiceBox.setItems(FXCollections.observableArrayList(klienciName));
+        tableSurnameChoiceBox.setItems(FXCollections.observableArrayList(klienciSurname));
+        tableGenderChoiceBox.setItems(FXCollections.observableArrayList( "Male", "Female"));
 
 
 

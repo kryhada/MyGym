@@ -37,8 +37,7 @@
             <children>
                 <VBox>
                     <children>
-                        <HBox><children><TextField fx:id="search" prefHeight="0.0" prefWidth="237.0" promptText="Szukaj" style="-fx-background-color: #2A2E37;" /></children></HBox>
-                        <HBox><children><ChoiceBox layoutX="209.0" layoutY="147.0" prefWidth="150.0" /></children></HBox>
+                        <TextField fx:id="search" text="search" />
                     </children>
                 </VBox>
                 <VBox />

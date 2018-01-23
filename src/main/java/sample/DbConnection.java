@@ -88,6 +88,7 @@ public class DbConnection {
                 wiek = result.getInt("wiek");
                 gender = result.getString("gender");
                 klienci.add(new DbKlient(id, imie, nazwisko, nr_telefonu, wiek, gender));
+
             }
         } catch(SQLException e){
             System.out.println("Blad odczytu z bazy");

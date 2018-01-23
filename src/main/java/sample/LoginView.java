@@ -10,9 +10,9 @@ public class LoginView extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/oknoglowne.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/login.fxml"));
         primaryStage.setTitle("MyGym Login");
-        primaryStage.setScene(new Scene(root, 800, 350));
+        primaryStage.setScene(new Scene(root, 500, 350));
         primaryStage.show();
     }
 

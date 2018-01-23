@@ -48,7 +48,7 @@ public class LoginController implements Initializable {
             System.out.println(connection.selectUzytkownik(login.getText(), haslo.getText()));
             System.out.println("Logowanie Powiodlo sie");
             Parent mainWindowSceneParent = FXMLLoader.load(getClass().getResource("/oknoglowne.fxml"));
-            Scene mainWindowScene = new Scene(mainWindowSceneParent);
+            Scene mainWindowScene = new Scene(mainWindowSceneParent, 800, 350);
             Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
             stage.setScene(mainWindowScene);
             stage.show();

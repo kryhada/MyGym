@@ -6,7 +6,7 @@ public class DbPracownik {
     private String nazwisko;
     private String nr_telefonu;
     private String email;
-    private int stanowisko;
+    private String stanowisko;
 
     public int getId(){
         return id;
@@ -38,15 +38,15 @@ public class DbPracownik {
     public void setEmail(String email){
         this.email = email;
     }
-    public int getStanowisko(){
+    public String getStanowisko(){
         return stanowisko;
     }
-    public void setStanowisko(int stanowisko){
+    public void setStanowisko(String stanowisko){
         this.stanowisko = stanowisko;
     }
 
     public DbPracownik(){}
-    public DbPracownik(int id, String imie, String nazwisko, String nr_telefonu, int wiek){
+    public DbPracownik(int id, String imie, String nazwisko, String nr_telefonu, String email, String stanowisko){
         this.id = id;
         this.imie = imie;
         this.nazwisko = nazwisko;

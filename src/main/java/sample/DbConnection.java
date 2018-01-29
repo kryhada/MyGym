@@ -101,14 +101,17 @@ public class DbConnection {
     public List<DbPracownik> selectPracownik(){
         List<DbPracownik> pracownicy = new LinkedList<>();
         try{
-            ResultSet result = stat.executeQuery("select id, imie, nazwisko from pracownik");
+            ResultSet result = stat.executeQuery("select p.id p.imie, p.nazwisko, p.nr_telefonu, p.email,  s.nazwa from pracownik p join stanowisko s on p.stanowisko = s.id ");
             int id;
-            String imie, nazwisko;
+            String imie, nazwisko, telefon, email, stanowisko;
             while(result.next()){
                 id = result.getInt("id");
                 imie = result.getString("imie");
                 nazwisko = result.getString("nazwisko");
-                pracownicy.add(new DbPracownik(id, imie, nazwisko));
+                telefon = result.getString("nr_telefonu");
+                email = result.getString("email");
+                stanowisko = result.getString("stanowisko");
+                pracownicy.add(new DbPracownik(id, imie, nazwisko, telefon, email, stanowisko));
             }
         } catch(SQLException e){
             System.out.println("Blad odczytu z bazy");

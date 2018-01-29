@@ -17,13 +17,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sample.LogFactory.*;
 
 
 public class LoginController implements Initializable {
 
-
-    @FXML
-    private Label invalidLabel;
     @FXML
     private JFXTextField login;
     @FXML
@@ -31,22 +29,23 @@ public class LoginController implements Initializable {
 
     @FXML
     private void handleLoginAction(ActionEvent event) throws  Exception {
-        System.out.println("Start Login procedure...");
-        System.out.println("Login: " + login.getText());
-        System.out.println("Haslo: " + haslo.getText());
+        LogFactory logFactory = new LogFactory();
+        Log log = logFactory.getLog("LOGIN");
+        log.writeLog("Start login Procedure");
         DbConnection connection = new DbConnection();
         if (connection.selectUzytkownik(login.getText(), haslo.getText()).isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Niepoprawne logowanie");
             alert.setHeaderText(null);
             alert.setContentText("Dane do logowania sa bledne, sprobuj ponownie");
-
-
+            log = logFactory.getLog("ERROR");
+            log.writeLog("Bledne dane logowania");
             alert.showAndWait();
 
         }else{
-            System.out.println(connection.selectUzytkownik(login.getText(), haslo.getText()));
-            System.out.println("Logowanie Powiodlo sie");
+            log = logFactory.getLog("LOGIN");
+            log.writeLog("Logowanie powiodlo sie");
+            log.writeLog("Username: "+connection.selectUzytkownik(login.getText(), haslo.getText()));
             Parent mainWindowSceneParent = FXMLLoader.load(getClass().getResource("/oknoglowne.fxml"));
             Scene mainWindowScene = new Scene(mainWindowSceneParent, 800, 350);
             Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();

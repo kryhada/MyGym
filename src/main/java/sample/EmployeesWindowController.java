@@ -19,8 +19,8 @@ import javafx.stage.Stage;
 
 public class EmployeesWindowController implements Initializable{
 
-    public DbConnection connection = new DbConnection();
-    List<DbPracownik> pracownicy = connection.selectPracownik();
+    public DbQuery query = DbQuery.getInstance();
+    List<DbPracownik> pracownicy = query.selectPracownik();
 
     @FXML
     public ListView pracownicyListView = new ListView<String>();

@@ -1,54 +1,27 @@
 package sample;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
-public class DbConnection {
+public class DbQuery{
 
-    private static final String DRIVER = "org.sqlite.JDBC";
-    private static final String DB_URL = "jdbc:sqlite:C:/Users/Krystian/IdeaProjects/MyGym/src/main/DataBase/myDB";
-
-    protected Connection conn;
-    protected Statement stat;
-    private static DbConnection instance = new DbConnection();
+    private DbConnection connnection = DbConnection.getInstance();
+    private static DbQuery instance = new DbQuery();
 
 
-    private DbConnection(){
-        try{
-            Class.forName(DbConnection.DRIVER);
-        } catch (ClassNotFoundException e){
-            System.err.println("Brak sterownika JDBC");
-            e.printStackTrace();
-        }
+    private DbQuery(){}
 
-        try{
-            conn = DriverManager.getConnection(DB_URL);
-            stat = conn.createStatement();
-        } catch(SQLException e) {
-            System.err.println("Problem z otwarciem polaczenia");
-            e.printStackTrace();
-        }
-    }
-
-    public static DbConnection getInstance(){
+    public static DbQuery getInstance(){
         return instance;
     }
 
-    public void closeConnection(){
+    public boolean insertUzytkownik(int id, String login, String haslo, String imie, String nazwisko){
         try{
-            conn.close();
-        } catch (SQLException e){
-            System.err.println("Problem z zamknieciem polaczenia");
-            e.printStackTrace();
-        }
-    }
-
-
-
-    /*public boolean insertUzytkownik(int id, String login, String haslo, String imie, String nazwisko){
-        try{
-            PreparedStatement prepStm = conn.prepareStatement(
+            PreparedStatement prepStm = connnection.conn.prepareStatement(
                     "insert into uzytkownik values (?, ?, ?, ?, ?);");
             prepStm.setInt(1, id);
             prepStm.setString(2, login);
@@ -67,8 +40,8 @@ public class DbConnection {
     List<DbUzytkownik> selectUzytkownik(String arg1, String arg2){
         List<DbUzytkownik> uzytkownicy = new LinkedList<DbUzytkownik>();
         try{
-           // ResultSet result = stat.executeQuery("select * from uzytkownik where login like ? AND haslo like ? ");
-            PreparedStatement prepStm = conn.prepareStatement("select * from uzytkownik where login like ? AND haslo like ? ");
+            // ResultSet result = stat.executeQuery("select * from uzytkownik where login like ? AND haslo like ? ");
+            PreparedStatement prepStm = connnection.conn.prepareStatement("select * from uzytkownik where login like ? AND haslo like ? ");
             prepStm.setString(1, arg1);
             prepStm.setString(2, arg2);
             ResultSet result =prepStm.executeQuery();
@@ -93,7 +66,7 @@ public class DbConnection {
     List<DbKlient> selectKlient(){
         List<DbKlient> klienci = new LinkedList<DbKlient>();
         try{
-            ResultSet result = stat.executeQuery("select * from klient");
+            ResultSet result = connnection.stat.executeQuery("select * from klient");
             int id, wiek;
             String imie, nazwisko, nr_telefonu, gender;
             while(result.next()){
@@ -117,7 +90,7 @@ public class DbConnection {
     List<DbPracownik> selectPracownik(){
         List<DbPracownik> pracownicy = new LinkedList<>();
         try{
-            ResultSet result = stat.executeQuery("select p.id p.imie, p.nazwisko, p.nr_telefonu, p.email,  s.nazwa from pracownik p join stanowisko s on p.stanowisko = s.id ");
+            ResultSet result = connnection.stat.executeQuery("select p.id p.imie, p.nazwisko, p.nr_telefonu, p.email,  s.nazwa from pracownik p join stanowisko s on p.stanowisko = s.id ");
             int id;
             String imie, nazwisko, telefon, email, stanowisko;
             while(result.next()){
@@ -137,12 +110,6 @@ public class DbConnection {
         return pracownicy;
     }
 
-    public void closeConnection(){
-        try{
-            conn.close();
-        } catch (SQLException e){
-            System.err.println("Problem z zamknieciem polaczenia");
-            e.printStackTrace();
-        }
-    }*/
+
+
 }

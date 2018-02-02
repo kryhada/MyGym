@@ -27,8 +27,8 @@ import sample.CriteriaFilters.CriteriaSurname;
 
 public class MainWindowController implements Initializable  {
 
-    public DbConnection connection = new DbConnection();
-    List<DbKlient> klienci = connection.selectKlient();
+    public DbQuery query = DbQuery.getInstance();
+    List<DbKlient> klienci = query.selectKlient();
     List<DbKlient> fullListKlienci = klienci;
     List<String> klienciGender = new ArrayList<String>();
     List<String> klienciId = new ArrayList<String>();

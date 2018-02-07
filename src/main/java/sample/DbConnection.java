@@ -1,5 +1,8 @@
 package sample;
 
+import sample.LogFactory.Log;
+import sample.LogFactory.LogFactory;
+
 import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,13 +15,14 @@ public class DbConnection {
     protected Connection conn;
     protected Statement stat;
     private static DbConnection instance = new DbConnection();
-
+    LogFactory logFactory = new LogFactory();
+    Log log = logFactory.getLog("DATABASE");
 
     private DbConnection(){
         try{
             Class.forName(DbConnection.DRIVER);
         } catch (ClassNotFoundException e){
-            System.err.println("Brak sterownika JDBC");
+            log.writeLog("Brak sterownika JDBC");
             e.printStackTrace();
         }
 
@@ -26,7 +30,7 @@ public class DbConnection {
             conn = DriverManager.getConnection(DB_URL);
             stat = conn.createStatement();
         } catch(SQLException e) {
-            System.err.println("Problem z otwarciem polaczenia");
+            log.writeLog("Problem z otwarciem poùàczenia");
             e.printStackTrace();
         }
     }
@@ -39,110 +43,8 @@ public class DbConnection {
         try{
             conn.close();
         } catch (SQLException e){
-            System.err.println("Problem z zamknieciem polaczenia");
+            log.writeLog("Problem z zamknieciem poùàczenia");
             e.printStackTrace();
         }
     }
-
-
-
-    /*public boolean insertUzytkownik(int id, String login, String haslo, String imie, String nazwisko){
-        try{
-            PreparedStatement prepStm = conn.prepareStatement(
-                    "insert into uzytkownik values (?, ?, ?, ?, ?);");
-            prepStm.setInt(1, id);
-            prepStm.setString(2, login);
-            prepStm.setString(3, haslo);
-            prepStm.setString(4, imie);
-            prepStm.setString(5, nazwisko);
-            prepStm.execute();
-        } catch(SQLException e){
-            System.err.println("Blad przy dodawaniu rekordu");
-            e.printStackTrace();
-            return false;
-        }
-        return true;
-    }
-
-    List<DbUzytkownik> selectUzytkownik(String arg1, String arg2){
-        List<DbUzytkownik> uzytkownicy = new LinkedList<DbUzytkownik>();
-        try{
-           // ResultSet result = stat.executeQuery("select * from uzytkownik where login like ? AND haslo like ? ");
-            PreparedStatement prepStm = conn.prepareStatement("select * from uzytkownik where login like ? AND haslo like ? ");
-            prepStm.setString(1, arg1);
-            prepStm.setString(2, arg2);
-            ResultSet result =prepStm.executeQuery();
-            int id;
-            String login, haslo, imie, nazwisko;
-            while(result.next()){
-                id = result.getInt("id");
-                login = result.getString("login");
-                haslo = result.getString("haslo");
-                imie = result.getString("imie");
-                nazwisko = result.getString("nazwisko");
-                uzytkownicy.add(new DbUzytkownik(id, login, haslo, imie, nazwisko));
-            }
-        } catch(SQLException e){
-            System.out.println("Blad odczytu z bazy");
-            e.printStackTrace();
-            return null;
-        }
-        return uzytkownicy;
-    }
-
-    List<DbKlient> selectKlient(){
-        List<DbKlient> klienci = new LinkedList<DbKlient>();
-        try{
-            ResultSet result = stat.executeQuery("select * from klient");
-            int id, wiek;
-            String imie, nazwisko, nr_telefonu, gender;
-            while(result.next()){
-                id = result.getInt("id");
-                imie = result.getString("imie");
-                nazwisko = result.getString("nazwisko");
-                nr_telefonu = result.getString("nr_telefonu");
-                wiek = result.getInt("wiek");
-                gender = result.getString("gender");
-                klienci.add(new DbKlient(id, imie, nazwisko, nr_telefonu, wiek, gender));
-
-            }
-        } catch(SQLException e){
-            System.out.println("Blad odczytu z bazy");
-            e.printStackTrace();
-            return null;
-        }
-        return klienci;
-    }
-
-    List<DbPracownik> selectPracownik(){
-        List<DbPracownik> pracownicy = new LinkedList<>();
-        try{
-            ResultSet result = stat.executeQuery("select p.id p.imie, p.nazwisko, p.nr_telefonu, p.email,  s.nazwa from pracownik p join stanowisko s on p.stanowisko = s.id ");
-            int id;
-            String imie, nazwisko, telefon, email, stanowisko;
-            while(result.next()){
-                id = result.getInt("id");
-                imie = result.getString("imie");
-                nazwisko = result.getString("nazwisko");
-                telefon = result.getString("nr_telefonu");
-                email = result.getString("email");
-                stanowisko = result.getString("stanowisko");
-                pracownicy.add(new DbPracownik(id, imie, nazwisko, telefon, email, stanowisko));
-            }
-        } catch(SQLException e){
-            System.out.println("Blad odczytu z bazy");
-            e.printStackTrace();
-            return null;
-        }
-        return pracownicy;
-    }
-
-    public void closeConnection(){
-        try{
-            conn.close();
-        } catch (SQLException e){
-            System.err.println("Problem z zamknieciem polaczenia");
-            e.printStackTrace();
-        }
-    }*/
 }

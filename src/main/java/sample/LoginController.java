@@ -2,7 +2,6 @@ package sample;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
@@ -50,8 +49,6 @@ public class LoginController implements Initializable {
             stage.show();
         }
     }
-
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

@@ -61,6 +61,4 @@ public class DbKlientUsluga {
         return ""+id+" "+klient+" "+usluga+" "+data_start+" "+data_stop+" "+sprzedawca_opiekun+" ";
     }
 
-
-
 }

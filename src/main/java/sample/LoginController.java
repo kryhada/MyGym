@@ -2,7 +2,6 @@ package sample;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
@@ -13,9 +12,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.LogFactory.*;
 
@@ -32,8 +28,8 @@ public class LoginController implements Initializable {
         LogFactory logFactory = new LogFactory();
         Log log = logFactory.getLog("LOGIN");
         log.writeLog("Start login Procedure");
-        DbConnection connection = new DbConnection();
-        if (connection.selectUzytkownik(login.getText(), haslo.getText()).isEmpty()) {
+        DbQuery query = DbQuery.getInstance();
+        if (query.selectUzytkownik(login.getText(), haslo.getText()).isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Niepoprawne logowanie");
             alert.setHeaderText(null);
@@ -45,7 +41,7 @@ public class LoginController implements Initializable {
         }else{
             log = logFactory.getLog("LOGIN");
             log.writeLog("Logowanie powiodlo sie");
-            log.writeLog("Username: "+connection.selectUzytkownik(login.getText(), haslo.getText()));
+            log.writeLog("Username: "+query.selectUzytkownik(login.getText(), haslo.getText()));
             Parent mainWindowSceneParent = FXMLLoader.load(getClass().getResource("/oknoglowne.fxml"));
             Scene mainWindowScene = new Scene(mainWindowSceneParent, 800, 350);
             Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
@@ -53,8 +49,6 @@ public class LoginController implements Initializable {
             stage.show();
         }
     }
-
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

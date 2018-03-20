@@ -10,6 +10,8 @@ public class LogFactory {
             case "LOGIN":
                 return new LoginLog();
 
+            case "DATABASE":
+                return new DataBaseLog();
         }
         return null;
     }
